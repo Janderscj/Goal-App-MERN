@@ -1,6 +1,11 @@
 import express from 'express';
 import goalRoutes from './routes/goalRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
+import colors from 'colors';
+import connectDB from './config/db.js';
+
+// Connect to database
+connectDB();
 
 const app = express();
 app.use(express.json());

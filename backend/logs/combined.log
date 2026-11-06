@@ -1,2 +1,11 @@
 {"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T18:10:36.803Z"}
 {"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T18:12:37.578Z"}
+{"level":"error","message":"Please add a text field","service":"devops-api","timestamp":"2026-11-06T19:32:21.338Z"}
+{"level":"error","message":"Please add a text field","service":"devops-api","timestamp":"2026-11-06T19:32:39.300Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:32:46.496Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:35:06.200Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:35:33.425Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:39:44.538Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:40:26.884Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:45:46.034Z"}
+{"level":"info","message":"Goal set successfully","service":"devops-api","timestamp":"2026-11-06T19:47:19.748Z"}
