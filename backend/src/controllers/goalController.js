@@ -5,18 +5,18 @@ import Goal from '../models/goalModel.js';
 // @desc    Get all goals
 // @route   GET /api/goals
 // @access  Public
-const getGoals = asyncHandler(async(req, res) => {
+const getGoals = asyncHandler(async (req, res) => {
   const goals = await Goal.find();
-  res.status(200).json({ goals });
+  res.status(200).json({ goals: goals.map(goal => ({ text: goal.text, id: goal.id })) });
 });
 
 // @desc    Set a goal
 // @route   POST /api/goals
 // @access  Public
-const setGoal = asyncHandler(async(req, res) => {
-  if(!req.body.text){
+const setGoal = asyncHandler(async (req, res) => {
+  if (!req.body.text) {
     logger.error('Please add a text field');
-    res.status(400).json({message: 'Please add a text field'});
+    res.status(400).json({ message: 'Please add a text field' });
     throw new Error('Please add a text field');
   }
   const goal = await Goal.create({ text: req.body.text });
@@ -27,9 +27,9 @@ const setGoal = asyncHandler(async(req, res) => {
 // @desc    Update a goal
 // @route   PUT /api/goals/:id
 // @access  Public
-const updateGoal = asyncHandler(async(req, res) => {
+const updateGoal = asyncHandler(async (req, res) => {
   const goal = await Goal.findById(req.params.id);
-  if(!goal){
+  if (!goal) {
     res.status(400).json({ message: 'Goal not found' });
     throw new Error('Goal not found');
   }
@@ -40,9 +40,9 @@ const updateGoal = asyncHandler(async(req, res) => {
 // @desc    Delete a goal
 // @route   DELETE /api/goals/:id
 // @access  Public
-const deleteGoal = asyncHandler(async(req, res) => {
+const deleteGoal = asyncHandler(async (req, res) => {
   const goal = await Goal.findById(req.params.id);
-  if(!goal) {
+  if (!goal) {
     res.status(400).json({ message: 'Goal not found' });
     throw new Error('Goal not found');
   }

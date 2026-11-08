@@ -6,3 +6,4 @@ drizzle/
 package-lock.json
 .eslintrc.js
 .prettierrc
+eslint.config.js
