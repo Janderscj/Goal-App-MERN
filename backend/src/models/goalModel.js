@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import mongoose from 'mongoose';
 
 const goalSchema = mongoose.Schema(
