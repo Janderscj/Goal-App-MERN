@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import goalRoutes from './routes/goalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
@@ -17,6 +18,19 @@ app.use('/api/users', userRoutes);
 app.get('/', (req, res) => {
   res.status(200).send('Hello from the API!');
 });
+
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) =>
+    // eslint-disable-next-line comma-dangle
+    res.sendFile(path.resolve(__dirname, '../', 'frontend', 'build', 'index.html'))
+  );
+} else {
+  app.get('*', (req, res) => {
+    res.status(404).send('Please set to production');
+  });
+}
 app.use(errorHandler);
 
 export default app;

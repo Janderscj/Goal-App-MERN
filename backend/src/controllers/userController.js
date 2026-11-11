@@ -66,18 +66,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-  const userId = req.user?.id || req.user?._id;
-
-  if (!userId) {
-    res.status(401);
-    throw new Error('User not authenticated');
-  }
-  const user = await User.findById(userId);
-  if (!user) {
-    res.status(404);
-    throw new Error('User not found');
-  }
-  res.status(200).json({ id: user._id, name: user.name, email: user.email });
+  res.status(200).json(req.user);
 });
 
 // jwt token generation helper function

@@ -4,8 +4,9 @@
   "description": "",
   "main": "backend/src/index.js",
   "scripts": {
-    "dev": "node --watch backend/src/index.js",
+    "server": "node --watch backend/src/index.js",
     "start": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write . --ignore-path .prettierignore",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "concurrently": "^10.0.7",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",

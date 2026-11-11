@@ -1,14 +1,13 @@
 import logger from '../config/logger.js';
 import asyncHandler from 'express-async-handler';
 import Goal from '../models/goalModel.js';
-import User from '../models/userModel.js';
 
-// @desc    Get all goals
+// @desc    Get user goals
 // @route   GET /api/goals
 // @access  Private
 const getGoals = asyncHandler(async (req, res) => {
   const goals = await Goal.find({ user: req.user.id });
-  res.status(200).json({ goals: goals.map(goal => ({ text: goal.text, id: goal.id })) });
+  res.status(200).json(goals);
 });
 
 // @desc    Set a goal
@@ -16,7 +15,6 @@ const getGoals = asyncHandler(async (req, res) => {
 // @access  Private
 const setGoal = asyncHandler(async (req, res) => {
   if (!req.body.text) {
-    logger.error('Please add a text field');
     res.status(400).json({ message: 'Please add a text field' });
     throw new Error('Please add a text field');
   }
@@ -38,10 +36,8 @@ const updateGoal = asyncHandler(async (req, res) => {
     throw new Error('Goal not found');
   }
 
-  const user = await User.findById(req.user.id);
-
   // Check for user existence
-  if (!user) {
+  if (!req.user) {
     res.status(401).json({ message: 'User not found' });
     throw new Error('User not found');
   }
@@ -67,10 +63,8 @@ const deleteGoal = asyncHandler(async (req, res) => {
     res.status(400).json({ message: 'Goal not found' });
     throw new Error('Goal not found');
   }
-  const user = await User.findById(req.user.id);
-
   // Check for user existence
-  if (!user) {
+  if (!req.user) {
     res.status(401).json({ message: 'User not found' });
     throw new Error('User not found');
   }
@@ -80,6 +74,7 @@ const deleteGoal = asyncHandler(async (req, res) => {
     throw new Error('User not authorized');
   }
   await Goal.findByIdAndDelete(req.params.id);
+  logger.info(`Deleted Goal: "${goal.text}"`);
   res.status(200).json({ message: `Deleted Goal ${req.params.id}`, goal });
 });
 
