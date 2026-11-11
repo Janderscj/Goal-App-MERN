@@ -1,15 +1,17 @@
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import goalRoutes from './routes/goalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
-//import colors from 'colors';
 import connectDB from './config/db.js';
 
 // Connect to database
 connectDB();
 
 // Initialize Express app
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 app.set('json spaces', 2);
 app.use(express.json());
