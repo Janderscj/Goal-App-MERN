@@ -9,6 +9,7 @@ import connectDB from './config/db.js';
 // Connect to database
 connectDB();
 
+// Initialize Express app
 const app = express();
 app.set('json spaces', 2);
 app.use(express.json());
