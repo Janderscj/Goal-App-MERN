@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write . --ignore-path .prettierignore",
-    "format:check": "prettier --check . --ignore-path .prettierignore"
+    "format:check": "prettier --check . --ignore-path .prettierignore",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
