@@ -18,9 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/goals', goalRoutes);
 app.use('/api/users', userRoutes);
-app.get('/', (req, res) => {
-  res.status(200).send('Hello from the API!');
-});
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
