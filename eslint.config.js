@@ -31,6 +31,7 @@ export default [
       'comma-dangle': ['error', 'always-multiline'],
       'no-trailing-spaces': 'error',
       'eol-last': ['error', 'always'],
+      'Unexpected token': 'warn'
     },
   },
   {
